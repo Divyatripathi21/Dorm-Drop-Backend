@@ -39,7 +39,7 @@ const io = new Server(server, {
 
 app.use(cors(
   {
-    origin: "https://dorm-drop-frontend.vercel.app",
+    origin: "https://dorm-drop-frontend-omx5aj37t-divyatripathi21s-projects.vercel.app/",
     methods:["GET","POST","DELETE","PUT"],
     credentials:true,       //https://dormdrop.onrender.com  //http://localhost:5173
   }

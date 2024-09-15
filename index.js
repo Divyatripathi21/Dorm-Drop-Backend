@@ -29,16 +29,6 @@ const app = express();
 const server =createServer(app);
 
 
-
-
-app.use(cors(
-  {
-    origin: "https://dorm-drop-frontend-4g7xt9ueb-divyatripathi21s-projects.vercel.app",
-    methods:["GET","POST","DELETE","PUT"],
-    credentials:true,       //https://dormdrop.onrender.com  //http://localhost:5173
-  }
-))
-
 const io = new Server(server, {
   cors: {
     origin: "https://dorm-drop-frontend-4g7xt9ueb-divyatripathi21s-projects.vercel.app",     //http://localhost:5173  //https://dormdrop.onrender.com
@@ -47,7 +37,13 @@ const io = new Server(server, {
   },
 });
 
-
+app.use(cors(
+  {
+    origin: "https://dorm-drop-frontend-4g7xt9ueb-divyatripathi21s-projects.vercel.app",
+    methods:["GET","POST","DELETE","PUT"],
+    credentials:true,       //https://dormdrop.onrender.com  //http://localhost:5173
+  }
+))
 
 
 app.use(express.json());
@@ -190,18 +186,18 @@ io.on("connection", (socket) => {
 
 
 
-server.listen('https://dorm-drop-backend-e975.vercel.app/', () => {
+server.listen(3000, () => {
   console.log("Server is running on port 3000!");
 });
 
-app.use("/auth", authRoutes);
-app.use("/sender", senderRoutes);
-app.use("/receiver", receiverRoutes);
-app.use("/otp", otpRoutes);
-app.use("/dashboard", dashboardRoutes);
-app.use("/yourorders", yourOrdersRoutes);
-app.use("/senderend", senderendRoutes);
-app.use("/rating", ratingRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/sender", senderRoutes);
+app.use("/api/receiver", receiverRoutes);
+app.use("/api/otp", otpRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/yourorders", yourOrdersRoutes);
+app.use("/api/senderend", senderendRoutes);
+app.use("/api/rating", ratingRoutes);
 
 // app.use(express.static(path.join(__dirname,'/client/dist')));
 

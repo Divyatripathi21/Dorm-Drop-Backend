@@ -29,21 +29,25 @@ const app = express();
 const server =createServer(app);
 
 
+
+
+app.use(cors(
+  {
+    origin: "https://dorm-drop-frontend-omx5aj37t-divyatripathi21s-projects.vercel.app",
+    methods:["GET","POST","DELETE","PUT"],
+    credentials:true,       //https://dormdrop.onrender.com  //http://localhost:5173
+  }
+))
+
 const io = new Server(server, {
   cors: {
-    origin: "https://dorm-drop-frontend.vercel.app",     //http://localhost:5173  //https://dormdrop.onrender.com
+    origin: "https://dorm-drop-frontend-omx5aj37t-divyatripathi21s-projects.vercel.app",     //http://localhost:5173  //https://dormdrop.onrender.com
     methods:["GET","POST","DELETE","PUT"],
     credentials:true,
   },
 });
 
-app.use(cors(
-  {
-    origin: "https://dorm-drop-frontend-omx5aj37t-divyatripathi21s-projects.vercel.app/",
-    methods:["GET","POST","DELETE","PUT"],
-    credentials:true,       //https://dormdrop.onrender.com  //http://localhost:5173
-  }
-))
+
 
 
 app.use(express.json());
